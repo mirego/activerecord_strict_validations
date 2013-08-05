@@ -17,6 +17,7 @@ gem 'activerecord_mysql_strict'
 ```ruby
 create_table "events" do |t|
   t.string   "name"
+  t.string   "email", limit: 128
   t.text     "description"
   t.integer  "people_count"
 end
@@ -31,6 +32,12 @@ event = Event.new(name: '.' * 400)
 event.valid? # => false
 
 event = Event.new(name: '.' * 255)
+event.valid? # => true
+
+event = Event.new(email: '.' * 200)
+event.valid? # => false
+
+event = Event.new(email: '.' * 100)
 event.valid? # => true
 
 # Text columns
