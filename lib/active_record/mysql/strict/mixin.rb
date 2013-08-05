@@ -17,16 +17,16 @@ module ActiveRecord
               model_columns = model_columns.select { |c| only.include?(c.name.to_sym) }
             end
 
-            model_columns.select { |c| c.type == :string }.map(&:name).each do |field|
-              validates field, length: { in: 0..255 }, allow_blank: true
+            model_columns.select { |c| c.type == :string }.each do |field|
+              validates field.name, length: { in: 0..(field.limit || 255) }, allow_blank: true
             end
 
-            model_columns.select { |c| c.type == :text }.map(&:name).each do |field|
-              validates field, length: { in: 0..65535 }, allow_blank: true
+            model_columns.select { |c| c.type == :text }.each do |field|
+              validates field.name, length: { in: 0..(field.limit || 65535) }, allow_blank: true
             end
 
-            model_columns.select { |c| c.type == :integer }.map(&:name).each do |field|
-              validates field, numericality: { greather_than_or_equal_to: -2147483647, less_than_or_equal_to: 2147483647 }, allow_blank: true
+            model_columns.select { |c| c.type == :integer }.each do |field|
+              validates field.name, numericality: { greather_than_or_equal_to: -2147483647, less_than_or_equal_to: 2147483647 }, allow_blank: true
             end
           end
         end
