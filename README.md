@@ -71,6 +71,10 @@ class Event < ActiveRecord::Base
 end
 ```
 
+## Todo
+
+* Support other MySQL column types that raise a `Mysql2::Error` exception when given a wrong value.
+
 ## License
 
 `ActiveRecord::MySQL::Strict` is © 2013 [Mirego](http://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).  See the [`LICENSE.md`](https://github.com/mirego/activerecord_mysql_strict/blob/master/LICENSE.md) file.
