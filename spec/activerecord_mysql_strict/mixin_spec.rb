@@ -129,7 +129,7 @@ describe ActiveRecord::MySQL::Strict::Mixin do
       end
     end
 
-    context 'for model with accessor that returns an invalid string' do
+    context 'for valid model with accessor that returns an invalid string' do
       let(:model) do
         strict_model 'User' do
           attr_reader :long_name
@@ -152,7 +152,35 @@ describe ActiveRecord::MySQL::Strict::Mixin do
       end
 
       subject { model.new(long_name: '*' * 10) }
+      its(:long_name) { should eql '*' * 400 }
       it { should be_valid }
+    end
+
+    context 'for invalid model with accessor that returns a valid string' do
+      let(:model) do
+        strict_model 'User' do
+          attr_reader :short_name
+
+          # When we call `#short_name` it will return a valid string but
+          # we want the attribute to store the real, valid value because we
+          # want to actually make sure that the real attribute value does
+          # exceed the limit, not what the accessor returns.
+          define_method :short_name= do |value|
+            @short_name = '*' * 100
+            write_attribute(:short_name, value)
+          end
+        end
+      end
+
+      before do
+        run_migration do
+          create_table(:users, force: true) { |t| t.string :short_name }
+        end
+      end
+
+      subject { model.new(short_name: '*' * 400) }
+      its(:short_name) { should eql '*' * 100 }
+      it { should_not be_valid }
     end
   end
 end
