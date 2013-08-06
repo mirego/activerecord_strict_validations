@@ -115,9 +115,7 @@ describe ActiveRecord::MySQL::Strict::Mixin do
     context 'for model with related validations' do
       context 'for presence validation' do
         let(:model) do
-          strict_model 'User' do
-            validates :name, presence: true
-          end
+          strict_model('User') { validates :name, presence: true }
         end
 
         before do
