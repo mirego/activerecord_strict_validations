@@ -17,7 +17,7 @@ module ActiveRecord
 
           model_columns.each do |field|
             method = :"define_mysql_strict_#{field.type}_validation"
-            Validations.send(method, klass, field) if Validations.respond_to?(method)
+            send(method, klass, field) if respond_to?(method)
           end
         end
 
