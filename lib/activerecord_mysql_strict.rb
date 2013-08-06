@@ -5,11 +5,10 @@ require 'active_model'
 require 'active_support'
 
 require 'active_record/mysql/strict/strict_length_validator'
-require 'active_record/mysql/strict/mixin'
+require 'active_record/mysql/strict/validations'
 
 class ActiveRecord::Base
   def self.validates_strict_columns(options = {})
-    @mysql_strict_options = options
-    include ActiveRecord::MySQL::Strict::Mixin
+    ActiveRecord::MySQL::Strict::Validations.define_mysql_strict_validations(self, options)
   end
 end
