@@ -1,6 +1,7 @@
 # ActiveRecord::MySQL::Strict
 
 [![Gem Version](https://badge.fury.io/rb/activerecord_mysql_strict.png)](https://rubygems.org/gems/activerecord_mysql_strict)
+[![Build Status](https://travis-ci.org/mirego/activerecord_mysql_strict.png?branch=master)](https://travis-ci.org/mirego/activerecord_mysql_strict)
 
 `ActiveRecord::MySQL::Strict` adds validations to ActiveRecord models to make sure they do not trigger errors in MySQL strict mode.
 
