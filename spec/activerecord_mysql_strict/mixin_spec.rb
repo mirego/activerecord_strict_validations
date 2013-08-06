@@ -128,5 +128,31 @@ describe ActiveRecord::MySQL::Strict::Mixin do
         it { expect(subject.errors.full_messages).to eql ["Name can't be blank"] }
       end
     end
+
+    context 'for model with accessor that returns an invalid string' do
+      let(:model) do
+        strict_model 'User' do
+          attr_reader :long_name
+
+          # When we call `#long_name` it will return an invalid string but
+          # we want the attribute to store the real, valid value because we
+          # want to actually make sure that the real attribute value does
+          # not exceed the limit, not what the accessor returns.
+          define_method :long_name= do |value|
+            @long_name = '*' * 400
+            write_attribute(:long_name, value)
+          end
+        end
+      end
+
+      before do
+        run_migration do
+          create_table(:users, force: true) { |t| t.string :long_name }
+        end
+      end
+
+      subject { model.new(long_name: '*' * 10) }
+      it { should be_valid }
+    end
   end
 end

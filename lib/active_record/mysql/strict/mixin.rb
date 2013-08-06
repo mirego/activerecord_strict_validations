@@ -29,11 +29,11 @@ module ActiveRecord
           end
 
           def define_mysql_strict_string_validation(field)
-            validates field.name, length: { in: 0..(field.limit || MYSQL_STRICT_STRING_LIMIT) }, allow_blank: true
+            validates field.name, 'ActiveRecord::MySQL::Strict::StrictLength' => { in: 0..(field.limit || MYSQL_STRICT_STRING_LIMIT) }, allow_blank: true
           end
 
           def define_mysql_strict_text_validation(field)
-            validates field.name, length: { in: 0..(field.limit || MYSQL_STRICT_TEXT_LIMIT) }, allow_blank: true
+            validates field.name, 'ActiveRecord::MySQL::Strict::StrictLength' => { in: 0..(field.limit || MYSQL_STRICT_TEXT_LIMIT) }, allow_blank: true
           end
 
           def define_mysql_strict_integer_validation(field)
