@@ -1,6 +1,11 @@
 module ActiveRecord
   module MySQL
     module Strict
+      # Constants
+      MYSQL_STRICT_STRING_LIMIT = 255
+      MYSQL_STRICT_TEXT_LIMIT = 65535
+      MYSQL_STRICT_INTEGER_LIMIT = 2147483647
+
       module Mixin
         extend ActiveSupport::Concern
 
@@ -17,17 +22,22 @@ module ActiveRecord
               model_columns = model_columns.select { |c| only.include?(c.name.to_sym) }
             end
 
-            model_columns.select { |c| c.type == :string }.each do |field|
-              validates field.name, length: { in: 0..(field.limit || 255) }, allow_blank: true
+            model_columns.each do |field|
+              method = :"define_mysql_strict_#{field.type}_validation"
+              send(method, field) if respond_to?(method)
             end
+          end
 
-            model_columns.select { |c| c.type == :text }.each do |field|
-              validates field.name, length: { in: 0..(field.limit || 65535) }, allow_blank: true
-            end
+          def define_mysql_strict_string_validation(field)
+            validates field.name, length: { in: 0..(field.limit || MYSQL_STRICT_STRING_LIMIT) }, allow_blank: true
+          end
 
-            model_columns.select { |c| c.type == :integer }.each do |field|
-              validates field.name, numericality: { greather_than_or_equal_to: -2147483647, less_than_or_equal_to: 2147483647 }, allow_blank: true
-            end
+          def define_mysql_strict_text_validation(field)
+            validates field.name, length: { in: 0..(field.limit || MYSQL_STRICT_TEXT_LIMIT) }, allow_blank: true
+          end
+
+          def define_mysql_strict_integer_validation(field)
+            validates field.name, numericality: { greather_than_or_equal_to: -MYSQL_STRICT_INTEGER_LIMIT, less_than_or_equal_to: MYSQL_STRICT_INTEGER_LIMIT }, allow_blank: true
           end
         end
       end
