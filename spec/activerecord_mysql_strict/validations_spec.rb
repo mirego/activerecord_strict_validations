@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActiveRecord::MySQL::Strict::Validations do
+describe ActiveRecord::MySQL::Strict::Validation do
   describe :define_mysql_strict_validations do
     context 'for model without other validations' do
       let(:model) { strict_model 'User' }
