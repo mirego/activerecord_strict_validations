@@ -15,6 +15,8 @@ require 'active_record/mysql/strict/validation/integer_validation'
 
 class ActiveRecord::Base
   def self.validates_strict_columns(options = {})
-    ActiveRecord::MySQL::Strict::Validation.inject_validations(self, options)
+    if table_exists?
+      ActiveRecord::MySQL::Strict::Validation.inject_validations(self, options)
+    end
   end
 end
