@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActiveRecord::MySQL::Strict do
+describe ActiveRecord::StrictValidations do
   describe :validates_strict_columns do
     before do
       spawn_model 'User'
@@ -11,7 +11,7 @@ describe ActiveRecord::MySQL::Strict do
 
     context 'without options' do
       before do
-        expect(ActiveRecord::MySQL::Strict::Validation).to receive(:inject_validations).with(User, {})
+        expect(ActiveRecord::StrictValidations::Validation).to receive(:inject_validations).with(User, {})
       end
 
       it { User.validates_strict_columns }
@@ -19,7 +19,7 @@ describe ActiveRecord::MySQL::Strict do
 
     context 'with options' do
       before do
-        expect(ActiveRecord::MySQL::Strict::Validation).to receive(:inject_validations).with(User, { except: [:bar], only: [:foo] })
+        expect(ActiveRecord::StrictValidations::Validation).to receive(:inject_validations).with(User, { except: [:bar], only: [:foo] })
       end
 
       it { User.validates_strict_columns except: [:bar], only: [:foo] }

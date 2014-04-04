@@ -1,5 +1,5 @@
 module ModelMacros
-  # Create a new microscope model
+  # Create a new model
   def strict_model(klass_name, options = {}, &block)
     spawn_model klass_name do
       validates_strict_columns options

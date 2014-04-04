@@ -1,17 +1,17 @@
-# ActiveRecord::MySQL::Strict
+# ActiveRecord::StrictValidations
 
-[![Gem Version](https://badge.fury.io/rb/activerecord_mysql_strict.png)](https://rubygems.org/gems/activerecord_mysql_strict)
-[![Code Climate](https://codeclimate.com/github/mirego/activerecord_mysql_strict.png)](https://codeclimate.com/github/mirego/activerecord_mysql_strict)
-[![Build Status](https://travis-ci.org/mirego/activerecord_mysql_strict.png?branch=master)](https://travis-ci.org/mirego/activerecord_mysql_strict)
+[![Gem Version](https://badge.fury.io/rb/activerecord_strict_validations.png)](https://rubygems.org/gems/activerecord_strict_validations)
+[![Code Climate](https://codeclimate.com/github/mirego/activerecord_strict_validations.png)](https://codeclimate.com/github/mirego/activerecord_strict_validations)
+[![Build Status](https://travis-ci.org/mirego/activerecord_strict_validations.png?branch=master)](https://travis-ci.org/mirego/activerecord_strict_validations)
 
-`ActiveRecord::MySQL::Strict` adds validations to ActiveRecord models to make sure they do not trigger errors in MySQL strict mode.
+`ActiveRecord::StrictValidations` adds validations to ActiveRecord models to make sure they do not trigger database errors.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'activerecord_mysql_strict'
+gem 'activerecord_strict_validations'
 ```
 
 ## Usage
@@ -75,11 +75,11 @@ end
 
 ## Todo
 
-* Support other MySQL column types that raise a `Mysql2::Error` exception when given a wrong value.
+* Support other database column types that raise an exception when given a wrong value.
 
 ## License
 
-`ActiveRecord::MySQL::Strict` is © 2013 [Mirego](http://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).  See the [`LICENSE.md`](https://github.com/mirego/activerecord_mysql_strict/blob/master/LICENSE.md) file.
+`ActiveRecord::StrictValidations` is © 2013-2014 [Mirego](http://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).  See the [`LICENSE.md`](https://github.com/mirego/activerecord_strict_validations/blob/master/LICENSE.md) file.
 
 ## About Mirego
 

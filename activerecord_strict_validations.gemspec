@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'active_record/mysql/strict/version'
+require 'active_record/strict_validations/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'activerecord_mysql_strict'
-  spec.version       = ActiveRecord::MySQL::Strict::VERSION
+  spec.name          = 'activerecord_strict_validations'
+  spec.version       = ActiveRecord::StrictValidations
   spec.authors       = ['Rémi Prévost']
   spec.email         = ['rprevost@mirego.com']
-  spec.description   = 'ActiveRecord::MySQL::Strict adds validations to ActiveRecord models to make sure they do not trigger errors in MySQL strict mode.'
+  spec.description   = 'ActiveRecord::StrictValidations adds validations to ActiveRecord models to make sure they do not trigger database errors.'
   spec.summary       = spec.description
-  spec.homepage      = 'https://github.com/mirego/activerecord_mysql_strict'
+  spec.homepage      = 'https://github.com/mirego/activerecord_strict_valications'
   spec.license       = 'BSD 3-Clause'
 
   spec.files         = `git ls-files`.split($/)

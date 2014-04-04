@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActiveRecord::MySQL::Strict::Validation::StringValidation do
+describe ActiveRecord::StrictValidations::Validation::StringValidation do
   describe :apply do
     context 'for model without other validations' do
       let(:model) { strict_model 'User' }

@@ -3,7 +3,7 @@ $:.unshift File.expand_path('../lib', __FILE__)
 require 'rspec'
 require 'sqlite3'
 
-require 'activerecord_mysql_strict'
+require 'activerecord_strict_validations'
 
 # Require our macros and extensions
 Dir[File.expand_path('../../spec/support/macros/*.rb', __FILE__)].map(&method(:require))
