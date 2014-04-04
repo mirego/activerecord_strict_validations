@@ -1,5 +1,5 @@
 module ActiveRecord
-  module Strict
+  module StrictValidations
     class Validation
       class StringValidation < Validation
         LIMIT = 255

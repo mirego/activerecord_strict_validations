@@ -1,5 +1,5 @@
 module ActiveRecord
-  module Strict
+  module StrictValidations
     class Validation
       class IntegerValidation < Validation
         UPPER_LIMIT = 2147483647
