@@ -5,7 +5,7 @@ require 'active_record/strict_validations/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'activerecord_strict_validations'
-  spec.version       = ActiveRecord::StrictValidations
+  spec.version       = ActiveRecord::StrictValidations::VERSION
   spec.authors       = ['Rémi Prévost']
   spec.email         = ['rprevost@mirego.com']
   spec.description   = 'ActiveRecord::StrictValidations adds validations to ActiveRecord models to make sure they do not trigger database errors.'
