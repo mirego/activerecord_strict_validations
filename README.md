@@ -1,8 +1,8 @@
 # ActiveRecord::StrictValidations
 
-[![Gem Version](https://badge.fury.io/rb/activerecord_strict_validations.png)](https://rubygems.org/gems/activerecord_strict_validations)
-[![Code Climate](https://codeclimate.com/github/mirego/activerecord_strict_validations.png)](https://codeclimate.com/github/mirego/activerecord_strict_validations)
-[![Build Status](https://travis-ci.org/mirego/activerecord_strict_validations.png?branch=master)](https://travis-ci.org/mirego/activerecord_strict_validations)
+<a href="https://rubygems.org/gems/activerecord_strict_validations"><img src="http://img.shields.io/gem/v/activerecord_strict_validations.svg" /></a>
+<a href="https://codeclimate.com/github/mirego/activerecord_strict_validations"><img src="http://img.shields.io/codeclimate/github/mirego/activerecord_strict_validations.svg" /></a>
+<a href="https://travis-ci.org/mirego/activerecord_strict_validations"><img src="http://img.shields.io/travis/mirego/activerecord_strict_validations.svg" /></a>
 
 `ActiveRecord::StrictValidations` adds validations to ActiveRecord models to make sure they do not trigger database errors.
 
